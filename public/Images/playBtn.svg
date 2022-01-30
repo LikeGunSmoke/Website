@@ -1,0 +1,16 @@
+<svg width="88.432mm" height="88.432mm" version="1.1" viewBox="0 0 88.432 88.432" xmlns="http://www.w3.org/2000/svg">
+ <g transform="translate(43.016 58.726)">
+  <text style="font-family:'Arial Black';font-size:12.7px;line-height:1.25;shape-inside:url(#rect839);white-space:pre" xml:space="preserve"/>
+  <text style="font-family:'Brush Script MT';font-size:7.0556px;line-height:1.25;shape-inside:url(#rect1626);white-space:pre" xml:space="preserve"/>
+  <text x="-54.13393" y="-163.50327" style="font-family:'Brush Script MT';font-size:7.0556px;line-height:1.25;stroke-width:.26458" xml:space="preserve"><tspan x="-54.13393" y="-163.50327" style="stroke-width:.26458"/></text>
+  <g transform="translate(-138.44,219.97)">
+   <circle cx="139.64" cy="-234.48" r="42.893" style="fill:#ff0404;stroke-width:2.6458;stroke:#790000"/>
+   <g transform="translate(28.526 -373.62)">
+    <text x="88.38829" y="131.3595" style="font-family:'Arial Black';font-size:12.7px;line-height:1.25;stroke-width:.26458" xml:space="preserve"><tspan x="88.38829" y="131.3595" style="stroke-width:.26458">PRESS</tspan></text>
+    <text x="91.853142" y="154.1064" style="font-family:'Arial Black';font-size:12.7px;line-height:1.25;stroke-width:.26458" xml:space="preserve"><tspan x="91.853142" y="154.1064" style="stroke-width:.26458">PLAY</tspan></text>
+    <text x="100.99777" y="143.32295" style="font-family:'Arial Black';font-size:12.7px;line-height:1.25;stroke-width:.26458" xml:space="preserve"><tspan x="100.99777" y="143.32295" style="stroke-width:.26458">TO</tspan></text>
+   </g>
+   <path d="m128.38-267.38c-10.725 2.4818-14.271 11.523-14.271 11.523l-5.0361-1.8534c4.6992-9.2026 19.188-14.098 19.188-14.098z" style="fill:#ff6969"/>
+  </g>
+ </g>
+</svg>
