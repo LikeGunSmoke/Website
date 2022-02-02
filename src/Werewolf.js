@@ -21,23 +21,25 @@ export default function Werewolf() {
 
     ScrollTrigger.refresh();
 
-    const revealAnimation = gsap.to(reveal.current, { scrollTrigger: {
-      trigger: reveal.current,
-      start: 'top center',
-      end: 'bottom top',
-      toggleActions: 'play pause resume reset',
-      onEnter: () => demoVideo.current.play(),
-      onEnterBack: () => demoVideo.current.play(),
-      onLeave: () => demoVideo.current.pause(),
-      onLeaveBack: () => demoVideo.current.pause()
-    }, height: '0%', duration: 1});
+    const revealAnimation = gsap.to(reveal.current, {
+      scrollTrigger: {
+        trigger: reveal.current,
+        start: 'top center',
+        end: 'bottom top',
+        toggleActions: 'play pause resume reverse',
+        onEnter: () => demoVideo.current.play(),
+        onEnterBack: () => demoVideo.current.play(),
+        onLeave: () => demoVideo.current.pause(),
+        onLeaveBack: () => demoVideo.current.pause()
+      }, duration: 1, scaleY: 0, transformOrigin: 'top'});
 
-    const backgroundAnimation = gsap.to(background.current, {scrollTrigger: {
-      trigger: background.current,
-      start: 'top center',
-      end: '25% top',
-      scrub: true
-    }, opacity: 1});
+    const backgroundAnimation = gsap.to(background.current, {
+      scrollTrigger: {
+        trigger: background.current,
+        start: 'top center',
+        end: '25% top',
+        scrub: true
+      }, opacity: 1});
 
     return () => {
       revealAnimation.scrollTrigger.kill();
@@ -164,8 +166,7 @@ border-radius: 15%;
 background-color: rgba(191, 191, 191, 1);
 overflow: hidden;
 &:hover {
-  height: 55%;
-  width: 40%;
+  transform: scale(1.2);
   color: red;
   text-decoration: underline;
   cursor: pointer;
@@ -180,8 +181,7 @@ text-align: center;
 border-radius: 15%;
 background-color: rgba(191, 191, 191, 1);
 &:hover {
-  height: 40%;
-  width: 25%;
+  transform: scale(1.2);
   text-decoration: underline;
   color: red;
   cursor: pointer;
@@ -239,8 +239,7 @@ border-radius: 15%;
 background-color: rgba(191, 191, 191, 1);
 overflow: hidden;
 &:hover {
-  height: 55%;
-  width: 30%;
+  transform: scale(1.2);
   cursor: pointer;
 }
 `

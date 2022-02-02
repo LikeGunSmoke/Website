@@ -27,12 +27,12 @@ export default function Contraptions() {
         trigger: reveal.current,
         start: 'top center',
         end: 'bottom top',
-        toggleActions: 'play pause resume reset',
+        toggleActions: 'play pause resume reverse',
         onEnter: () => demoVideo.current.play(),
         onEnterBack: () => demoVideo.current.play(),
         onLeave: () => demoVideo.current.pause(),
         onLeaveBack: () => demoVideo.current.pause()
-    }, duration: 1, width: '0%'});
+    }, duration: 1, scaleX: 0, transformOrigin: 'left'});
 
     return () => {
       revealAnimation.scrollTrigger.kill();
@@ -172,8 +172,7 @@ border-radius: 15%;
 background-color: rgba(191, 191, 191, 1);
 overflow: hidden;
 &:hover {
-  height: 55%;
-  width: 40%;
+  transform: scale(1.2);
   color: red;
   text-decoration: underline;
   cursor: pointer;
@@ -188,8 +187,7 @@ text-align: center;
 border-radius: 15%;
 background-color: rgba(191, 191, 191, 1);
 &:hover {
-  height: 40%;
-  width: 25%;
+  transform: scale(1.2);
   color: red;
   text-decoration: underline;
   cursor: pointer;

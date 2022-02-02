@@ -168,8 +168,7 @@ const AboutBtn = styled.button`
   border-radius: 10%;
   background-color: rgba(191, 191, 191, 1);
   &:hover {
-    height: 55%;
-    width: 55%;
+    transform: scale(1.2);
     color: red;
     text-decoration: underline;
   }
@@ -208,8 +207,7 @@ const SkillsBtn = styled.button`
   border-radius: 10%;
   background-color: rgba(191, 191, 191, 1);
   &:hover {
-    height: 55%;
-    width: 55%;
+    transform: scale(1.2);
     color: red;
     text-decoration: underline;
   }
@@ -252,8 +250,7 @@ const ContactBtn = styled.button`
   border-radius: 10%;
   background-color: rgba(191, 191, 191, 1);
   &:hover {
-    height: 55%;
-    width: 55%;
+    transform: scale(1.2);
     color: red;
     text-decoration: underline;
   }
