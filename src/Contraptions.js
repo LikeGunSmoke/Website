@@ -1,22 +1,14 @@
-import { useRef, useEffect, useLayoutEffect } from 'react'
+import { useRef, useLayoutEffect } from 'react';
 import styled from 'styled-components';
 import video from './videos/ContraptionsDemo.mp4';
-import playBtn from './images/playBtn.svg';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from './utils/gsap/ScrollTrigger.js';
 gsap.registerPlugin(ScrollTrigger);
 
 export default function Contraptions() {
 
-  const container = useRef();
   const reveal = useRef();
-  const front = useRef();
-  const back = useRef();
-  const demoVideo = useRef();
-  const btn = useRef();
-  const flip = useRef();
-  const hover = useRef();
-  const btnClick = useRef();
+  const demoVideo = useRef()
 
   useLayoutEffect(() => {
 
@@ -32,7 +24,7 @@ export default function Contraptions() {
         onEnterBack: () => demoVideo.current.play(),
         onLeave: () => demoVideo.current.pause(),
         onLeaveBack: () => demoVideo.current.pause()
-    }, duration: 1, scaleX: 0, transformOrigin: 'left'});
+    }, duration: 1, scaleY: 0, transformOrigin: 'top'});
 
     return () => {
       revealAnimation.scrollTrigger.kill();
@@ -40,199 +32,101 @@ export default function Contraptions() {
 
   }, []);
 
-  useEffect(() => {
-
-    flip.current = gsap.timeline({paused: true});
-    hover.current = gsap.timeline({paused: true});
-    btnClick.current = gsap.timeline({paused: true});
-
-    gsap.set(back.current, {rotationX: -180});
-
-    flip.current.to(front.current, {rotationX: -180}, 0)
-    .to(back.current, {rotationX: 0}, 0);
-
-    hover.current.to(btn.current, {scale: 1.1});
-
-    btnClick.current.to(btn.current, {scale: 0.9})
-    .to(btn.current, {scale: 1});
-
-    return () => {
-      flip.current.kill();
-      hover.current.kill();
-      btnClick.current.kill();
-    };
-
-  }, []);
-
   return (
-    <ContWrapper ref={container} >
+    <Container>
+      <Text>Projects</Text>
+      <Title>Classic Contraptions</Title>
       <Reveal ref={reveal} />
-      <Back ref={back} >
-        <Info>
-          <InfoText>
-            As the sole developer I created Classic Contraptions as a fun learning experiment and homage to the games I enjoyed playing as a kid. Classic Contraptions is a 3D single played game built with React Three Fiber, Cannon JS, and Redux. Click the github link below to learn more!
-          </InfoText>
-          <GHLink href="https://www.github.com/LikeGunSmoke/contraptions">GitHub Repo</GHLink>
-        </Info>
-        <BackBtn onClick={() => flip.current.reverse()} >Go Back</BackBtn>
-      </Back>
-      <ContraptionsCont ref={front} >
-        <ContTitle >Classic Contraptions</ContTitle>
-        <ContDemo >
-          <DemoVideo ref={demoVideo} muted >
-            <source src={video} />
-            Your browser does not support this video format
-          </DemoVideo>
-        </ContDemo>
-        <HowBtn onClick={() => flip.current.play()} >How's it work?</HowBtn>
-        <PlayBtn>
-          <a href="http://www.classiccontraptions.com/">
-            <BtnImg ref={btn} src={playBtn} alt='play button'
-              onMouseEnter={() => hover.current.play()}
-              onMouseLeave={() => hover.current.reverse()}
-              onClick={() => btnClick.current.play(0)}
-            />
-          </a>
-        </PlayBtn>
-      </ContraptionsCont>
-    </ContWrapper>
+      <Video ref={demoVideo} muted onClick={() => demoVideo.current.controls=true}>
+        <source src={video} />
+        Your browser does not suppoer this video format.
+      </Video>
+      <Links>
+        <GHLink href="https://www.github.com/LikeGunSmoke/contraptions" >GitHub Repo</GHLink>
+        <PlayLink href="http://www.classiccontraptions.com/" >Play the game!</PlayLink>
+      </Links>
+    </Container>
   );
 };
 
-const ContWrapper = styled.div`
-height: 100%;
-width: 100%;
-display: grid;
-grid-template-areas:
-". . ."
-". . ContraptionsCont"
-". . .";
-grid-template-rows: 20% 70% 10%;
-grid-template-columns: 10% 10% 80%;
-position: relative;
+const Container = styled.div`
+  height: 100%;
+  width: 100%;
+  position: relative;
+  display: grid;
+  grid-template-areas:
+  ". . text text"
+  "title title . ."
+  "video video video ."
+  "video video video ."
+  "links links links .";
+  grid-template-columns: 25% 25% 25% 25%;
+  grid-template-rows: 10% 20% 30% 30% 10%;
+  overflow: auto;
 `
-const ContraptionsCont = styled.div`
-grid-area: ContraptionsCont;
-display: grid;
-grid-template-areas:
-". ContTitle ContTitle ."
-". ContDemo ContDemo ."
-". how play .";
-grid-template-rows: 20% 70% 10%;
-grid-template-columns: 5% 45% 45% 5%;
-background-color: rgba(189, 195, 199, 0.7);
-box-shadow: 10px 10px 10px 5px #999;
-backface-visibility: hidden;
+const Text = styled.h1`
+  grid-area: text;
+  margin-top: 5%;
+  height: 100%;
+  width: 100%;
+  text-align: center;
+  font-size: 5vw;
+  text-decoration: underline;
+  color: #84C3CC;
 `
-const ContTitle = styled.div`
-grid-area: ContTitle;
-justify-self: center;
-font-size: 1.5em;
-margin-top: 5%;
-font-family: 'Libre Baskerville', serif;
-text-decoration: underline;
+const Title = styled.h1`
+  grid-area: title;
+  font-size: 4vw;
+  color: #84C3CC;
+  align-self: end;
+  margin-left: 10%;
 `
-const ContDemo = styled.div`
-grid-area: ContDemo;
-border: 2px solid black;
-background-color: white;
+const Video = styled.video`
+  grid-area: video;
+  height: 100%;
+  width: 100%;
+  object-fit: contain;
 `
 const Reveal = styled.div`
- height: 100%;
- width: 100%;
- position: absolute;
- grid-area: ContraptionsCont;
- background: black;
- z-index: 99;
+  grid-area: video;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  background-color: #293E4E;
+  z-index: 3;
 `
-const Back = styled.div`
-display: grid;
-grid-template-areas:
-". . . ."
-". info info ."
-". info info ."
-". backBtn backBtn .";
-grid-template-rows: 10% 35% 35% 20%;
-grid-template-columns: 5% 45% 45% 5%;
-height: 100%;
-width: 100%;
-postion: absolute;
-grid-area: ContraptionsCont;
-background-color: rgba(189, 195, 199, 0.7);
-z-index: 2;
-backface-visibility: hidden;
-`
-const HowBtn = styled.button`
-grid-area: how;
-height: 50%;
-width: 35%;
-place-self: center;
-text-align: center;
-border-radius: 15%;
-background-color: rgba(191, 191, 191, 1);
-overflow: hidden;
-&:hover {
-  transform: scale(1.2);
-  color: red;
-  text-decoration: underline;
-  cursor: pointer;
-}
-`
-const BackBtn = styled.button`
-grid-area: backBtn;
-height: 35%;
-width: 20%;
-place-self: center;
-text-align: center;
-border-radius: 15%;
-background-color: rgba(191, 191, 191, 1);
-&:hover {
-  transform: scale(1.2);
-  color: red;
-  text-decoration: underline;
-  cursor: pointer;
-}
-`
-const Info = styled.div`
-grid-area: info;
-height: 100%;
-width: 100%;
-background: white;
-overflow: auto;
-`
-const InfoText = styled.p`
-font-size: 2em;
-font-family: 'Crimson Text', serif;
-line-height: 3em;
+const Links = styled.div`
+  grid-area: links;
+  display: grid;
+  grid-template-areas:
+  "github . . play";
+  grid-template-columns: 25% 25% 25% 25%;
 `
 const GHLink = styled.a`
-font-size: 1.5em;
-position: absolute;
-top: 75%;
-&:link {
-  color: black;
-}
-&:visited {
-  color: blue;
-}
-&:hover {
-  color: red;
-}
+  grid-area: github;
+  place-self: start end;
+  font-size: 2vw;
+  &:link {
+    color: #84C3CC;
+  }
+  &:visited {
+    color: #12B85F;
+  }
+  &:hover {
+    color: red;
+  }
 `
-const PlayBtn = styled.div`
-grid-area: play;
-height: 100%;
-width: 100%;
-place-self: center;
-`
-const BtnImg = styled.img`
-height: 90%;
-width: 25%;
-margin-top: 0.5%;
-margin-left: 50%;
-`
-const DemoVideo = styled.video`
-grid-area: ContDemo;
-height: 100%;
-width: 100%;
+const PlayLink = styled.a`
+  grid-area: play;
+  justify-self: start;
+  font-size: 2vw;
+  &:link {
+    color: #84C3CC;
+  }
+  &:visited {
+    color: #12B85F;
+  }
+  &:hover {
+    color: red;
+  }
 `

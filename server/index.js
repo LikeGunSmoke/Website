@@ -41,6 +41,10 @@ app.get('/github', (req, res) => {
   res.status(301).redirect('https://www.github.com/LikeGunSmoke/');
 });
 
+app.get('/resume', (req, res) => {
+  res.status(200).sendFile('src/files/RobertStrangeResume.pdf');
+});
+
 app.listen(PORT, () => {
   console.log(`Server listening at localhost:${PORT}!`);
 });
