@@ -42,7 +42,7 @@ app.get('/github', (req, res) => {
 });
 
 app.get('/resume', (req, res) => {
-  res.status(200).sendFile('src/files/RobertStrangeResume.pdf');
+  res.sendFile(path.join(__dirname, './src/files', 'RobertStrangeResume.pdf'));
 });
 
 app.listen(PORT, () => {
