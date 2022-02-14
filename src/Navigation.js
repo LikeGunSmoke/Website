@@ -57,7 +57,7 @@ export default function Navigation() {
       </Contact>
 
       <Resume ref={resume} >
-        <ResumeLink href="./files/RobertStrangeResume.pdf" target="_blank" >resume</ResumeLink>
+        <ResumeLink href="https://elasticbeanstalk-us-east-2-366639381743.s3.us-east-2.amazonaws.com/RobertStrangeResume.pdf" target="_blank" >resume</ResumeLink>
       </Resume>
 
     </Container>
