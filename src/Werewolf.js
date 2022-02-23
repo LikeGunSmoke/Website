@@ -66,7 +66,7 @@ const Title = styled.h1`
 grid-area: title;
 font-size: 4vw;
 place-self: end start;
-color: #84C3CC;
+color: ${props => props.theme.text};
 `
 const Video = styled.video`
 grid-area: video;
@@ -94,10 +94,10 @@ const GHLink = styled.a`
   justify-self: end;
   font-size: 2vw;
   &:link {
-    color: #84C3CC;
+    color: ${props => props.theme.text};
   }
   &:visited {
-    color: #12B85F;
+    color: ${props => props.theme.link_Visited};
   }
   &:hover {
     color: red;
@@ -108,10 +108,10 @@ const PlayLink = styled.a`
   place-self: start;
   font-size: 2vw;
   &:link {
-    color: #84C3CC;
+    color: ${props => props.theme.text};
   }
   &:visited {
-    color: #12B85F;
+    color: ${props => props.theme.link_Visited};
   }
   &:hover {
     color: red;

@@ -72,12 +72,12 @@ const Text = styled.h1`
   text-align: center;
   font-size: 5vw;
   text-decoration: underline;
-  color: #84C3CC;
+  color: ${props => props.theme.text};
 `
 const Title = styled.h1`
   grid-area: title;
   font-size: 4vw;
-  color: #84C3CC;
+  color: ${props => props.theme.text};
   align-self: end;
   margin-left: 10%;
 `
@@ -107,10 +107,10 @@ const GHLink = styled.a`
   place-self: start end;
   font-size: 2vw;
   &:link {
-    color: #84C3CC;
+    color: ${props => props.theme.text};
   }
   &:visited {
-    color: #12B85F;
+    color: ${props => props.theme.link_Visited};
   }
   &:hover {
     color: red;
@@ -121,10 +121,10 @@ const PlayLink = styled.a`
   justify-self: start;
   font-size: 2vw;
   &:link {
-    color: #84C3CC;
+    color: ${props => props.theme.text};
   }
   &:visited {
-    color: #12B85F;
+    color: ${props => props.theme.link_Visited};
   }
   &:hover {
     color: red;

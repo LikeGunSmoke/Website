@@ -81,7 +81,7 @@ place-self: center;
 const Text = styled.p`
 margin-top: 10%;
 font-size: 3vw;
-color: #84C3CC;
+color: ${props => props.theme.text};
 `
 const EmailLink = styled.a`
 grid-area: email;

@@ -1,12 +1,13 @@
 import { useRef, useEffect } from 'react';
 import Logo from './Logo.js';
+import ToggleThemeButton from './ToggleThemeButton.js';
 import styled from 'styled-components';
 import useWindowDimensions from './hooks/useWindowDimensions.js';
 import { gsap } from 'gsap';
 import { ScrollToPlugin } from './utils/gsap/ScrollToPlugin.js';
 gsap.registerPlugin(ScrollToPlugin);
 
-export default function Navigation() {
+export default function Navigation({ currentTheme,handleToggleTheme }) {
 
   const about = useRef();
   const projects = useRef();
@@ -32,11 +33,15 @@ export default function Navigation() {
       <LogoContainer
         onClick={() => gsap.to(window, {scrollTo: "#landingPage", duration: 2})}
       >
-        <Border />
-        <Logo />
+        <LogoBorder />
+        <Logo currentTheme={currentTheme} />
       </LogoContainer>
     }
     <Container>
+
+      <ToggleThemeContainer onClick={handleToggleTheme}>
+        <ToggleThemeButton currentTheme={currentTheme} handleToggleTheme={handleToggleTheme} />
+      </ToggleThemeContainer>
 
       <About ref={about}
         onClick={() => gsap.to(window, {scrollTo: "#about", duration: 2})}
@@ -74,8 +79,8 @@ const Container = styled.div`
   grid-template-areas:
   "about projects contact resume logo";
   grid-template-columns: 20% 20% 20% 20% 20%;
-  background-color: #050829;
-  border-bottom: 5px solid #12B85F;
+  background-color: ${props => props.theme.bg_Dark};
+  border-bottom: 5px solid ${props => props.theme.nav_Border};
   z-index: 98;
 `
 const About = styled.div`
@@ -86,12 +91,12 @@ const About = styled.div`
   display: flex;
   justify-content: end;
   align-items: center;
-  color: #84C3CC;
+  color: ${props => props.theme.text};
   font-size: 2.65vw;
   &:hover {
     cursor: pointer;
     text-decoration: underline;
-    color: #0EAD64;
+    color: ${props => props.theme.text_Hover};
   }
 `
 const Projects = styled.div`
@@ -102,12 +107,12 @@ const Projects = styled.div`
   display: flex;
   justify-content: end;
   align-items: center;
-  color: #84C3CC;
+  color: ${props => props.theme.text};
   font-size: 2.65vw;
   &:hover {
     cursor: pointer;
     text-decoration: underline;
-    color: #0EAD64;
+    color: ${props => props.theme.text_Hover};
   }
 `
 const Contact = styled.div`
@@ -118,12 +123,12 @@ const Contact = styled.div`
   display: flex;
   justify-content: end;
   align-items: center;
-  color: #84C3CC;
+  color: ${props => props.theme.text};
   font-size: 2.65vw;
   &:hover {
     cursor: pointer;
     text-decoration: underline;
-    color: #0EAD64;
+    color: ${props => props.theme.text_Hover};
   }
 `
 const Resume = styled.div`
@@ -134,21 +139,21 @@ const Resume = styled.div`
   display: flex;
   justify-content: end;
   align-items: center;
-  color: #84C3CC;
+  color: ${props => props.theme.text};
   font-size: 2.65vw;
 `
 const ResumeLink = styled.a`
 &:link {
-  color: #84C3CC;
+  color: ${props => props.theme.text};
   text-decoration: none;
 }
 &:visited {
-  color: #84C3CC;
+  color: ${props => props.theme.text};
   text-decoration: none;
 }
 &:hover {
   text-decoration: underline;
-  color: #0EAD64;
+  color: ${props => props.theme.text_Hover};
 }
 `
 const LogoContainer = styled.div`
@@ -157,17 +162,28 @@ top: 0%;
 left: 87%;
 height: 150px;
 width: 150px;
-background-color: #050829;
-border-bottom: 5px solid #12B85F;
+background-color: ${props => props.theme.bg_Dark};
+border-bottom: 5px solid ${props => props.theme.nav_Border};
 z-index: 99;
+&:hover {
+  cursor: pointer;
+}
 `
-const Border = styled.div`
+const LogoBorder = styled.div`
 position: absolute;
 height: 100px;
 width: 100%;
 top: 36.5%;
 left: -3.3%;
-border-left: 5px solid #12B85F;
-border-right: 5px solid #12B85F;
+border-left: 5px solid ${props => props.theme.nav_Border};
+border-right: 5px solid ${props => props.theme.nav_Border};
 z-index: -1;
+`
+const ToggleThemeContainer = styled.div`
+position: absolute;
+top: 5%;
+left: 3%;
+height: 40px;
+width: 2.65vw;
+z-index: 99;
 `

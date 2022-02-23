@@ -48,22 +48,22 @@ width: 100%;
 overflow: auto;
 `
 const Title = styled.h3`
-color: #84C3CC;
+color: ${props => props.theme.text};
 font-size: 2vw;
 `
 const SkillsTitle = styled.h2`
-color: #84C3CC;
+color: ${props => props.theme.text};
 font-size: 2.5vw;
 text-decoration: underline;
 `
 const AboutText = styled.p`
 font-size: 1.7vw;
 line-height: 2.2vw;
-color: #84C3CC;
+color: ${props => props.theme.text};
 `
 const SkillsText = styled.p`
 font-size: 1.7vw;
-color: #84C3CC;
+color: ${props => props.theme.text};
 `
 const Photo = styled.div`
 grid-area: photo;
