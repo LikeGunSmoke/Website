@@ -30,6 +30,7 @@ const themes = {
     border: '#0EAD64',
     nav_Border: '#12B85F',
     link_Visited: '#12B85F',
+    contact_Btn_Text: "#84C3CC"
   },
   light: {
     bg_Light: '#FFFFFF',
@@ -39,6 +40,7 @@ const themes = {
     border: '#DB0118',
     nav_Border: '#DB0118',
     link_Visited: '#008232',
+    contact_Btn_Text: "#FFFFFF"
   }
 
 };
